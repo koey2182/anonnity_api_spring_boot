@@ -25,6 +25,30 @@ public class Member {
     )
     private Set<Role> roles = new HashSet<>();
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getLoginId() {
+        return loginId;
+    }
+
+    public String getEncryptedLoginPw() {
+        return encryptedLoginPw;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public OffsetDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Member member)) return false;
