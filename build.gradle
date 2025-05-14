@@ -34,6 +34,10 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql:42.7.5'
 	//log4j2
 	implementation 'org.springframework.boot:spring-boot-starter-log4j2:3.4.5'
+	//Spring Security
+	implementation ('org.springframework.boot:spring-boot-starter-security:3.4.5') {
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+	}
 }
 
 tasks.named('test') {
