@@ -38,3 +38,10 @@
 * 🔧chore: 환경설정변경
 * 📝docs: 문서 추가/수정/삭제
 * ✅test: 테스트 코드 추가/수정/삭제
+
+## 💻사용한 기술
+* Java 21
+* Spring Boot 3
+* Spring Data JPA
+* PostgreSQL
+* Jasypt
