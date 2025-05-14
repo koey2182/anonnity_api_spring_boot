@@ -2,20 +2,31 @@ package com.koey.anonnity_api_spring_boot.entities;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "members")
-public class Member {
+@Table(
+        name = "members",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "unq_login_id", columnNames = "login_id"),
+                @UniqueConstraint(name = "unq_nickname", columnNames = "nickname")
+        }
+)
+public class Member implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private String loginId;
+    @Column(nullable = false)
     private String encryptedLoginPw;
+    @Column(nullable = false)
     private String nickname;
+    @Column(nullable = false)
     private OffsetDateTime createdAt;
     @ManyToMany
     @JoinTable(
@@ -24,6 +35,20 @@ public class Member {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles = new HashSet<>();
+
+    public Member() {
+    }
+
+    public Member(String loginId, String encryptedLoginPw, String nickname) {
+        this.loginId = loginId;
+        this.encryptedLoginPw = encryptedLoginPw;
+        this.nickname = nickname;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        this.createdAt = OffsetDateTime.now();
+    }
 
     public Long getId() {
         return id;
