@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 import java.util.stream.Collectors;
 
 @Component
-public class RoleCachRepository {
+public class RoleCacheRepository {
     private final Cache<String, Role> roleCache;
     private final RoleRepository roleRepository;
 
-    public RoleCachRepository(RoleRepository roleRepository) {
+    public RoleCacheRepository(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
         this.roleCache = new Cache<>();
     }
