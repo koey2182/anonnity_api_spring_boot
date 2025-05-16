@@ -39,10 +39,11 @@ public class Member implements Serializable {
     public Member() {
     }
 
-    public Member(String loginId, String encryptedLoginPw, String nickname) {
+    public Member(String loginId, String encryptedLoginPw, String nickname, Set<Role> roles) {
         this.loginId = loginId;
         this.encryptedLoginPw = encryptedLoginPw;
         this.nickname = nickname;
+        this.roles = roles;
     }
 
     @PrePersist
